@@ -77,4 +77,4 @@ app.post('/callback', bodyParser.urlencoded({ extended: false }), (req, res) => 
 	})
 })
 
-app.listen(process.env.PORT || 3000, () => console.log(`App listening on port ${process.env.PORT || 3000}!`))
+app.listen(process.env.PORT || 80, () => console.log(`App listening on port ${process.env.PORT || 80}!`))
