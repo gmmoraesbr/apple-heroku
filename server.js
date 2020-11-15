@@ -43,6 +43,7 @@ const getUserId = (token) => {
 }
 
 app.post('/callback', bodyParser.urlencoded({ extended: false }), (req, res) => {
+  console.log('req.body', JSON.stringify(req.body))
 	const clientSecret = getClientSecret()
 	const requestBody = {
 		grant_type: 'authorization_code',
@@ -51,7 +52,9 @@ app.post('/callback', bodyParser.urlencoded({ extended: false }), (req, res) => 
 		client_id: 'br.com.cicloo.service',
 		client_secret: clientSecret,
 		scope: 'name email'
-	}
+  }
+  console.log('requestBody', JSON.stringify(requestBody))
+  
 
 	axios.request({
 		method: "POST",
@@ -59,6 +62,7 @@ app.post('/callback', bodyParser.urlencoded({ extended: false }), (req, res) => 
 		data: querystring.stringify(requestBody),
 		headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
 	}).then(response => {
+    console.log('response', JSON.stringify(response))
 		return res.json({
 			success: true,
 			data: response.data,
