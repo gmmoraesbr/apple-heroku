@@ -69,6 +69,7 @@ app.post('/callback', bodyParser.urlencoded({ extended: false }), (req, res) => 
 			user: getUserId(response.data.id_token)
 		})
 	}).catch(error => {
+		console.log(error.response.data)
 		return res.status(500).json({
 			success: false,
 			error: error.response.data
