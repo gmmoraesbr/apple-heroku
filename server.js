@@ -52,7 +52,7 @@ const getUserId = (token) => {
 	}
 }
 
-app.post('/callback', (req, res) => {
+app.post('/callback', bodyParser.urlencoded({ extended: false }), (req, res) => {
   console.log('req.body', JSON.stringify(req.body))
 	const clientSecret = getClientSecret()
 	const requestBody = {
