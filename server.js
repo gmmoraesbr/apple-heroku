@@ -13,13 +13,13 @@ app.get('/', (req, res) => res.sendFile(path.join(__dirname, 'index.html')))
 
 // app.get('/teste', (req, res) => res.sendFile(path.join(__dirname, 'indexTeste.js')))
 
-app.get('/teste', function (req, res) {
-	// res.send('GET request to the homepage');
+// app.get('/teste', function (req, res) {
+// 	// res.send('GET request to the homepage');
 	
-	const clientSecret = getClientSecret();
+// 	const clientSecret = getClientSecret();
 
-	console.log(clientSecret);
-});
+// 	console.log(clientSecret);
+// });
 
 const getClientSecret = () => {
 	// sign with RSA SHA256
