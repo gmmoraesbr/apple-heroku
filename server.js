@@ -11,6 +11,16 @@ const querystring = require('querystring')
 
 app.get('/', (req, res) => res.sendFile(path.join(__dirname, 'index.html')))
 
+// app.get('/teste', (req, res) => res.sendFile(path.join(__dirname, 'indexTeste.js')))
+
+app.get('/teste', function (req, res) {
+	// res.send('GET request to the homepage');
+	
+	const clientSecret = getClientSecret();
+
+	console.log(clientSecret);
+});
+
 const getClientSecret = () => {
 	// sign with RSA SHA256
 	const privateKey = 'MIGTAgEAMBMGByqGSM49AgEGCCqGSM49AwEHBHkwdwIBAQQgas++S2m0JMKlyKWaoRABozLbmN71tUW8j1gFvC1jsgygCgYIKoZIzj0DAQehRANCAAQrSJDDf0wTjMWwWUwR3d09uKJZB9W9kVl1QXL48AuTr4rtewEyPjS+9blyN5tMiEkw3qJ01993Wxevv4KaTGbi';
@@ -42,7 +52,7 @@ const getUserId = (token) => {
 	}
 }
 
-app.post('/callback', bodyParser.urlencoded({ extended: false }), (req, res) => {
+app.post('/callback', (req, res) => {
   console.log('req.body', JSON.stringify(req.body))
 	const clientSecret = getClientSecret()
 	const requestBody = {
@@ -77,4 +87,6 @@ app.post('/callback', bodyParser.urlencoded({ extended: false }), (req, res) => 
 	})
 })
 
-app.listen(process.env.PORT || 80, () => console.log(`App listening on port ${process.env.PORT || 80}!`))
+app.listen(80, () => console.log(`App listening on port ${80}!`))
+
+// app.listen(process.env.PORT || 80, () => console.log(`App listening on port ${process.env.PORT || 80}!`))
